@@ -1,4 +1,4 @@
-package com.friends.covid19.adapter;
+package com.friends.covid19.activity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.friends.covid19.R;
-import com.friends.covid19.model.CountryModel;
+import com.friends.covid19.activity.CountryModel;
 
 import java.util.List;
 

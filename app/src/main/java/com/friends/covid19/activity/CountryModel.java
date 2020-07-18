@@ -1,4 +1,4 @@
-package com.friends.covid19.model;
+package com.friends.covid19.activity;
 
 public class CountryModel {
     private String flag, country, cases, todayCases, deaths, todayDeaths, recovered, active, critical;
