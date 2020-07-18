@@ -1,5 +1,6 @@
 package com.friends.covid19.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -110,5 +111,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goTrackCountries(View view) {
+        startActivity(new Intent(getApplicationContext(),AffectedCountries.class));
     }
 }
