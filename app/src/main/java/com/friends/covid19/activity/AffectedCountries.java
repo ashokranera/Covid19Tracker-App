@@ -1,10 +1,10 @@
 package com.friends.covid19.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.friends.covid19.R;
 import com.leo.simplearcloader.SimpleArcLoader;
@@ -14,6 +14,7 @@ public class AffectedCountries extends AppCompatActivity {
     EditText edtSearch;
     ListView listView;
     SimpleArcLoader simpleArcLoader;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
