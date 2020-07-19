@@ -1,10 +1,12 @@
 package com.friends.covid19.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -35,7 +37,7 @@ public class AffectedCountries extends AppCompatActivity {
     ListView listView;
     SimpleArcLoader simpleArcLoader;
 
-    public static  List<CountryModel> countryModelList = new ArrayList<>();
+    public static List<CountryModel> countryModelList = new ArrayList<>();
     CountryModel countryModel;
     MyCustomAdapter myCustomAdapter;
 
@@ -54,6 +56,13 @@ public class AffectedCountries extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         fetchData();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getApplicationContext(), DetailActivity.class).putExtra("position", position));
+            }
+        });
 
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -95,7 +104,7 @@ public class AffectedCountries extends AppCompatActivity {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
 
-                    for (int i = 0; i < jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -115,7 +124,7 @@ public class AffectedCountries extends AppCompatActivity {
                         countryModelList.add(countryModel);
                     }
 
-                    myCustomAdapter = new MyCustomAdapter(AffectedCountries.this,countryModelList);
+                    myCustomAdapter = new MyCustomAdapter(AffectedCountries.this, countryModelList);
                     simpleArcLoader.stop();
                     simpleArcLoader.setVisibility(View.GONE);
                     listView.setAdapter((ListAdapter) myCustomAdapter);
