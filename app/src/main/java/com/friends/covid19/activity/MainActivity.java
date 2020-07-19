@@ -50,13 +50,16 @@ public class MainActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.pieChart);
 
+
         fetchData();
 
     }
 
+
     private void fetchData() {
 
         String url = "https://disease.sh/v3/covid-19/all";
+
         simpleArcLoader.start();
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -75,10 +78,11 @@ public class MainActivity extends AppCompatActivity {
                     txtTodayDeaths.setText(jsonObject.getString("todayDeaths"));
                     txtAffectedCountries.setText(jsonObject.getString("affectedCountries"));
 
-                    pieChart.addPieSlice( new PieModel("Cases",Integer.parseInt(txtCases.getText().toString()), Color.parseColor("#FFA726")));
-                    pieChart.addPieSlice( new PieModel("Recovered",Integer.parseInt(txtRecovered.getText().toString()), Color.parseColor("#66BB6A")));
-                    pieChart.addPieSlice( new PieModel("Deaths",Integer.parseInt(txtTotalDeaths.getText().toString()), Color.parseColor("#EF5350")));
-                    pieChart.addPieSlice( new PieModel("Active",Integer.parseInt(txtActive.getText().toString()), Color.parseColor("#29B6F6")));
+                    pieChart.addPieSlice(new PieModel("Cases", Integer.parseInt(txtCases.getText().toString()), Color.parseColor("#FFA726")));
+                    pieChart.addPieSlice(new PieModel("Recovered", Integer.parseInt(txtRecovered.getText().toString()), Color.parseColor("#66BB6A")));
+                    pieChart.addPieSlice(new PieModel("Deaths", Integer.parseInt(txtTotalDeaths.getText().toString()), Color.parseColor("#EF5350")));
+                    pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(txtActive.getText().toString()), Color.parseColor("#29B6F6")));
+                    pieChart.startAnimation();
 
                     simpleArcLoader.stop();
                     simpleArcLoader.setVisibility(View.GONE);
@@ -111,6 +115,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goTrackCountries(View view) {
-        startActivity(new Intent(getApplicationContext(),AffectedCountries.class));
+        startActivity(new Intent(getApplicationContext(), AffectedCountries.class));
     }
 }
